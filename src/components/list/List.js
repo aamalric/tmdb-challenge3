@@ -1,5 +1,6 @@
 import {Lightning} from "wpe-lightning-sdk";
 import Item from "../item";
+import Metadata from "../metadata";
 
 export default class List extends Lightning.Component {
     static _template() {
@@ -18,10 +19,7 @@ export default class List extends Lightning.Component {
                  */
             },
             Metadata: {
-                /**
-                 * @todo: Your goal is to add a component that have multiple text labels,
-                 * 1 for the Title of the selected asset and 1 for the genre.
-                 */
+                 type: Metadata,
             }
         }
     }
@@ -38,12 +36,6 @@ export default class List extends Lightning.Component {
         this.setIndex(Math.min(++this._index, this.items.length - 1));
     }
 
-    /**
-     * @todo:
-     * Implement working setIndex method
-     * that stores index and position movie component to focus
-     * on selected item
-     */
     setIndex(idx){
         // store new index
         this._index = idx;
@@ -65,6 +57,8 @@ export default class List extends Lightning.Component {
                 x: index * (Item.width + Item.offset)
             };
         });
+        // Update the metadata with first entry on list data refresh
+        this.tag('Metadata').movie = v[0]
     }
 
     get items() {
@@ -77,5 +71,9 @@ export default class List extends Lightning.Component {
 
     _getFocused() {
         return this.activeItem;
+    }
+    
+    $onItemFocused(v) {
+      this.tag('Metadata').movie = v;
     }
 }

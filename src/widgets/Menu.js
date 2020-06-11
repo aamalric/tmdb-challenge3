@@ -13,7 +13,7 @@ export default class Menu extends Lightning.Component {
                 },
                 Series: {
                     type: MenuItem,
-                    label: "Series", id: "tv"
+                    label: "Series", id: "series"
                 },
                 Exit: {
                     type: MenuItem,
@@ -75,19 +75,7 @@ export default class Menu extends Lightning.Component {
     }
 
     _handleEnter(){
-        /**
-         * @todo:
-         *
-         * Your goal is to make the menu work, upon pressing enter, this function will be called
-         * you need to navigate to something like:
-         * Router.navigate("home/series")
-         * or
-         * Router.navigate("series")
-         * or
-         * Router.navigate("home/browse/series")
-         * ---
-         * so based on focused menu item.
-         */
+         Router.navigate(this.activeItem.id)
     }
 
     _getFocused(){

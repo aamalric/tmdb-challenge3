@@ -1,4 +1,4 @@
-export default class Movie {
+export default class Serie {
     constructor(obj,genres){
         this._adult = obj.adult;
         this._backdrop_path = obj.backdrop_path;
@@ -8,7 +8,7 @@ export default class Movie {
         this._popularity = obj.popularity;
         this._poster_path = obj.poster_path;
         this._release_date = obj.release_date;
-        this._title = obj.title;
+        this._title = obj.name;
         this._video = obj.video;
         this._vote_average = obj.vote_average;
         this._vote_count = obj.vote_count;
